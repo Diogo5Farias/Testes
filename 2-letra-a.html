@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 - Letra A</title>
+</head>
+<body>
+    <h3>2) Escreva um programa que verifique, em uma string, a existência da letra 'a', 
+        seja maiúscula ou minúscula, além de informar a quantidade de vezes em que ela ocorre.</h3>
+    <p>IMPORTANTE: Essa string pode ser informada através de qualquer entrada de sua preferência ou pode ser previamente definida no código;</p>
+    <p></p>
+    <p>Escreva uma String:</p>
+    <input size="10" onkeydown="apertaTecla(event)">
+    <button>Conferir</button>
+
+    <script>
+        var caixa = document.querySelector("input");
+        var botao = document.querySelector("button");
+        caixa.focus();
+        
+        function verifica(str) {
+        // Converte a string para minúsculas para garantir que tanto 'A' quanto 'a' sejam contados
+            var strMinuscula = caixa.value.toLowerCase();
+            var contador = 0;
+
+            // Percorre cada caractere da string
+            for (let i = 0; i < strMinuscula.length; i++) {
+                if (strMinuscula[i] === 'a') {
+                    contador++;
+                }
+            }
+
+            // Verifica se a letra 'a' foi encontrada e retorna o resultado
+            if (contador > 0) {
+                alert(`A letra "A" aparece ${contador} vezes na string.`);
+            } else {
+                alert(`A letra "A" não foi encontrada na string.`);
+            }
+            caixa.value = "";
+            caixa.focus();
+        }
+
+        function apertaTecla(event) {
+            let tecla = event.key;
+            if(tecla == "Enter") {
+                verifica();
+            }
+        }
+
+        botao.onclick = verifica;
+        
+    </script>
+</body>
+</html>
+
